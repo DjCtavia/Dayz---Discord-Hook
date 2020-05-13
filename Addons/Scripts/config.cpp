@@ -26,7 +26,7 @@ class CfgMods
 		extra = 0;
 		type = "mod";
 		
-		dependencies[] = {"Game", "Mission", "World"};
+		dependencies[] = {"Game", "Mission"};
 
 		class defs
 		{
@@ -35,12 +35,6 @@ class CfgMods
 				value = "";
 				files[] = {"discordhook/scripts/3_Game"};
 			}
-
-			class worldScriptModule
-			{
-				value = "";
-				files[] = {"discordhook/scripts/4_World"};
-			};
 
 			class missionScriptModule
 			{
