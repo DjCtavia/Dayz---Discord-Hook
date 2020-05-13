@@ -82,7 +82,3 @@ void ServerStartMessage()
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
-
-## API used
-
-* [World Time API](http://worldtimeapi.org)
