@@ -11,15 +11,16 @@ class DiscordObject_Video : DiscordObject
 	private int m_width;
 	private int m_height;
 
-	void DiscordObject_Video(int width = -1, int height = -1)
+	void DiscordObject_Video(string url, int width = -1, int height = -1)
 	{
 		m_width = width;
 		m_height = height;
+		m_fields.Set("url", url);
 	}
-	
+
 	override string DefaultJSONConvert()
 	{
-		return ConvertToJsonCloseByObject();
+		return ConvertToJsonCloseByObject("video");
 	}
 	
 	override protected string ConvertSpecialFields()
@@ -35,7 +36,7 @@ class DiscordObject_Video : DiscordObject
 	{
 		if (m_width > -1)
 		{
-			return helperJSON.GetJSONLineOthers("width", m_width.ToString());
+			return DiscordHelper.GetJSONLineOthers("width", m_width.ToString());
 		}
 		return "";
 	}
@@ -44,7 +45,7 @@ class DiscordObject_Video : DiscordObject
 	{
 		if (m_height > -1)
 		{
-			return helperJSON.GetJSONLineOthers("height", m_height.ToString());
+			return DiscordHelper.GetJSONLineOthers("height", m_height.ToString());
 		}
 		return "";
 	}

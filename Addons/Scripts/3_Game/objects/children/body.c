@@ -28,6 +28,7 @@ class DiscordObject_Body : DiscordObject
 		string addedFieldsToJson = "";
 		
 		addedFieldsToJson += GetColorField();
+		addedFieldsToJson += GetOtherFields();
 		return addedFieldsToJson;
 	}
 	
@@ -35,7 +36,7 @@ class DiscordObject_Body : DiscordObject
 	{
 		if (m_color > -1)
 		{
-			return helperJSON.GetJSONLineOthers("color", m_color.ToString());
+			return DiscordHelper.GetJSONLineOthers("color", m_color.ToString());
 		}
 		return "";
 	}
@@ -49,11 +50,16 @@ class DiscordObject_Body : DiscordObject
 			dataFields += "[";
 			foreach (auto otherField : m_otherFields)
 			{
-				dataFields += otherField.ConvertToJson();
+				dataFields += otherField.DefaultJSONConvert();
 			}
 			dataFields += "],";
 		}
 		return dataFields;
+	}
+
+	private void AddNewField(string name, string value, bool inline = false)
+	{
+		m_otherFields.Insert(new DiscordObject_Fields(name, value, inline));
 	}
 
 	override protected bool CanSetKey(string key)
@@ -67,7 +73,7 @@ class DiscordObject_Body : DiscordObject
 			case "url":
 				return true;
 			case "timestamp":
-				return false;
+				return true;
 		}
 		return false;
 	}

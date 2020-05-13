@@ -8,9 +8,14 @@ class DiscordObject_Footer : DiscordObject
 			icon_url - string
 			proxy_icon_url - string
 	*/
+	void DiscordObject_Footer(string text)
+	{
+		m_fields.Set("text", text);
+	}
+
 	override string DefaultJSONConvert()
 	{
-		return ConvertToJsonCloseByObject();
+		return ConvertToJsonCloseByObject("footer");
 	}
 
 	override protected bool CanSetKey(string key)

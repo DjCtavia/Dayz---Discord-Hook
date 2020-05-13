@@ -12,7 +12,7 @@ class DiscordObject_Image : DiscordObject
 	private int m_width;
 	private int m_height;
 
-	void DiscordFooter_Footer(int width = -1, int height = -1)
+	void DiscordObject_Image(int width = -1, int height = -1)
 	{
 		m_width = width;
 		m_height = height;
@@ -20,7 +20,7 @@ class DiscordObject_Image : DiscordObject
 	
 	override string DefaultJSONConvert()
 	{
-		return ConvertToJsonCloseByObject();
+		return ConvertToJsonCloseByObject("image");
 	}
 	
 	override protected string ConvertSpecialFields()
@@ -36,7 +36,7 @@ class DiscordObject_Image : DiscordObject
 	{
 		if (m_width > -1)
 		{
-			return helperJSON.GetJSONLineOthers("width", m_width.ToString());
+			return DiscordHelper.GetJSONLineOthers("width", m_width.ToString());
 		}
 		return "";
 	}
@@ -45,7 +45,7 @@ class DiscordObject_Image : DiscordObject
 	{
 		if (m_height > -1)
 		{
-			return helperJSON.GetJSONLineOthers("height", m_height.ToString());
+			return DiscordHelper.GetJSONLineOthers("height", m_height.ToString());
 		}
 		return "";
 	}

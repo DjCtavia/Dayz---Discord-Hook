@@ -20,7 +20,7 @@ class DiscordObject_Thumbnail : DiscordObject
 	
 	override string DefaultJSONConvert()
 	{
-		return ConvertToJsonCloseByObject();
+		return ConvertToJsonCloseByObject("thumbnail");
 	}
 	
 	override protected string ConvertSpecialFields()
@@ -36,7 +36,7 @@ class DiscordObject_Thumbnail : DiscordObject
 	{
 		if (m_width > -1)
 		{
-			return helperJSON.GetJSONLineOthers("width", m_width.ToString());
+			return DiscordHelper.GetJSONLineOthers("width", m_width.ToString());
 		}
 		return "";
 	}
@@ -45,7 +45,7 @@ class DiscordObject_Thumbnail : DiscordObject
 	{
 		if (m_height > -1)
 		{
-			return helperJSON.GetJSONLineOthers("height", m_height.ToString());
+			return DiscordHelper.GetJSONLineOthers("height", m_height.ToString());
 		}
 		return "";
 	}
