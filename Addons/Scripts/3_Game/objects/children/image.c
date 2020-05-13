@@ -6,8 +6,8 @@ class DiscordObject_Image : DiscordObject
 		Fields:
 			url - String
 			proxy_url - string
-			height - int
 			width - int
+			height - int
 	*/
 	private int m_width;
 	private int m_height;
