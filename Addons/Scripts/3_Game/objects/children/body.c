@@ -35,7 +35,7 @@ class DiscordObject_Body : DiscordObject
 	{
 		if (m_color > -1)
 		{
-			return m_color.ToString();
+			return helperJSON.GetJSONLineOthers("color", m_color.ToString());
 		}
 		return "";
 	}
