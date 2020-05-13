@@ -1,58 +1,44 @@
 class DiscordJSON
 {
-	bool m_useDate;
-	ref map<string, string> m_object;
-	
-	void DiscordJSON(bool useDate = true)
-	{
-		m_useDate = useDate;
-	}
+	/*
+		Source of discord hook help:
+			https://discord.com/developers/docs/resources/channel#embed-object
+	*/
+	ref DiscordObject_Body m_body;
+	ref DiscordObject_Footer m_footer;
+	ref DiscordObject_Image m_image;
+	ref DiscordObject_Thumbnail m_thumbnail;
+	ref DiscordObject_Video m_video;
+	ref DiscordObject_Provider m_provider;
+	ref DiscordObject_Author m_author;
 
 	/*
 		Description:
 			It convert an unformated data to a JSON to send through
 			DiscordHook class.
 	*/
-	string ConvertToJson()
+	string GetJSON()
 	{
 		string jsonData = "{";
-		foreach (string key : m_object.GetKeyArray())
-		{
-			jsonData += FormatKey(key);
-		}
+		
+		jsonData += GetModuleJSON(m_body);
+		jsonData += GetModuleJSON(m_footer);
+		jsonData += GetModuleJSON(m_image);
+		jsonData += GetModuleJSON(m_thumbnail);
+		jsonData += GetModuleJSON(m_video);
+		jsonData += GetModuleJSON(m_provider);
+		jsonData += GetModuleJSON(m_author);
 		jsonData += "}";
-	}
-
-	// http://worldtimeapi.org/pages/faqs#what-can-i-use-it-for
-	string GetTime()
-	{
-		CURLCallback cbx1 = new DiscordCallBack(this);
-		CURLContext ctx = GetCURLCore().GetCURLContext("http://worldtimeapi.org/api/ip");
-		ctx.GET(cbx1,"RequestPath?Argument=Something");
-	}
-};
-
-class DiscordCallBack : CURLCallback
-{
-	ref DiscordJSON m_instance;
-
-	void DiscordCallBack(ref DiscordJSON instance)
-	{
-		m_instance = instance;
-	}
-
-	override void OnError(int errorCode)
-	{
-		Print("[DiscordHook] An error occured during a call under error: " + errorCode);
+		jsonData = DiscordHelper.RemoveExtraCommasJSON(jsonData);
+		return jsonData;
 	}
 	
-	override void OnTimeout()
+	string GetModuleJSON(ref DiscordObject module)
 	{
-		Print("[DiscordHook] A call timeout...");
+		if (module)
+		{
+			return module.DefaultJSONConvert();
+		}
+		return "";
 	}
-	
-	override void OnSuccess(string data, int dataSize)
-	{
-		Print("[DiscordHook] Hook has been successfuly used!");
-	};
 };
