@@ -8,6 +8,11 @@ class DiscordObject_Footer : DiscordObject
 			icon_url - string
 			proxy_icon_url - string
 	*/
+	override string DefaultJSONConvert()
+	{
+		return ConvertToJsonCloseByObject();
+	}
+
 	override protected bool CanSetKey(string key)
 	{
 		switch (key)
