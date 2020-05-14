@@ -20,6 +20,7 @@ A step by step series of examples that tell you how to implement the mod on your
 #### 1.
 ```
 - Download the zip file on Github https://github.com/DjCtavia/Dayz---Discord-Hook/archive/master.zip
+if you decide to use this method, be careful, you'll need to pack it into PBO.
 
 OR
 
@@ -75,7 +76,7 @@ void ServerStartMessage()
     dataJSON.m_body = dataBody;
     dataJSON.m_thumbnail = dataThumb;
     // And the library will finish the work, sending the hook to your discord server
-    GetDiscordHook().SendHook("indep", dataJSON);
+    GetDiscordHook().SendHook("YourAlias", dataJSON);
 }
 ```
 
