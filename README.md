@@ -19,13 +19,13 @@ A step by step series of examples that tell you how to implement the mod on your
 
 #### 1.
 ```
-- Download the zip file on Github [here](link)
+- Download the zip file on Github [here](https://github.com/DjCtavia/Dayz---Discord-Hook/archive/master.zip)
 
 OR
 
-- Download the mod on steam workshop [here](link)
+- Download the mod on steam workshop [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2094926525)
 - Go to the path where steam is installed, and follow this path: 'Steam\steamapps\workshop\content\221100'
-- Find the folder with the id 'place holder'
+- Find the folder with the id '2094926525'
 ```
 
 #### 2.
