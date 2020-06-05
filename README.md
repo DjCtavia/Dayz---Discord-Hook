@@ -2,6 +2,8 @@
 
 This is a mod for the DayZ game, it is used on the server side only, and allows server creators with minimal effort to integrate Discord messages through the hooks provided by Discord.
 
+## Mod on Steam Workshop: [Link to steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2094926525)
+
 ## Getting Started
 
 The following instructions will detail the prerequisites, how to install the mod on a server. And we'll see how to link to Discord through a usage example.
