@@ -10,16 +10,16 @@ class DiscordHook
 	
 	bool SendHook(string alias, ref DiscordJSON data)
 	{
-		CURLCallback cbx1 = new SilentCallBack;
-		CURLCore clCore = GetCURLCore();
+		RestCallback cbx1 = new SilentCallBack;
+		RestApi clCore = GetRestApi();
 
 		if (m_alias.Contains(alias))
 		{
 			if (!clCore)
 			{
-				clCore = CreateCURLCore();
+				clCore = CreateRestApi();
 			}
-			CURLContext ctx = clCore.GetCURLContext(m_alias.Get(alias));
+			RestContext ctx = clCore.GetRestContext(m_alias.Get(alias));
 			ctx.SetHeader("application/json");
 			ctx.POST(cbx1, "", WrapData(data));
 			return true;
@@ -55,7 +55,7 @@ class DiscordHook
 	}
 };
 
-class SilentCallBack : CURLCallback
+class SilentCallBack : RestCallback
 {
 	override void OnError(int errorCode) {};
 	override void OnTimeout() {};
