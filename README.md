@@ -52,33 +52,12 @@ Just call the primary functions, call the right classes, more examples will be a
 
 ### Example
 
-```c
-void MissionServer()
-{
-    GetDiscordHook().SetAlias("YourAlias", "YourDiscordWebHookURL");
-    // We call our method that will send a request to our discord hook
-    ServerStartMessage();
-}
+- Automatically created DH_DiscordConfigDataFile.json file, you only need to change!
 
-void ServerStartMessage()
+```json
 {
-    // We init our discordJSON, that represent the data we will give to the hook
-    ref DiscordJSON dataJSON = new DiscordJSON();
-    // We choose the module we want to use, here we're using "body" and "thumbnail"
-    ref DiscordObject_Body dataBody = new DiscordObject_Body(5019904);
-    ref DiscordObject_Thumbnail dataThumb = new DiscordObject_Thumbnail(64, 64);
-
-    // The "body" let us choose a color for or embed, have description and others things
-    dataBody.SetField("title", "Server start!");
-    dataBody.SetField("description", "Server has started! You can now connect!");
-    // We set our image url, fields can be found inside the DiscordObject_Thumbnail class
-    dataThumb.SetField("url", "https://gamehag.com/img/rewards/logo/dayz.png");
-		
-    // And we assign the Modules to our data converter
-    dataJSON.m_body = dataBody;
-    dataJSON.m_thumbnail = dataThumb;
-    // And the library will finish the work, sending the hook to your discord server
-    GetDiscordHook().SendHook("YourAlias", dataJSON);
+    "m_discordHookServerName": "HERE_SERVER_NAME",
+    "m_discordHook": "HERE_LINK_DISCORD_HOOK"
 }
 ```
 
